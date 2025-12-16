@@ -1,4 +1,3 @@
-"""
 {% extends 'blog/base.html' %}
 
 {% block content %}
@@ -9,7 +8,7 @@
             <a href="{% url 'post_create' %}" class="btn btn-primary mb-3">新規投稿</a>
         {% endif %}
         
-        {% for post in posts %}
+        {% for post in object %}
             <div class="card mb-3">
                 <div class="card-body">
                     <h2 class="card-title">
@@ -30,4 +29,3 @@
     </div>
 </div>
 {% endblock %}
-"""
