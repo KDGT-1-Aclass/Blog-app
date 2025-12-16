@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ title }} - マイブログ{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ title }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">保存</button>
+    <a href="{% url 'post_list' %}" class="btn btn-secondary">キャンセル</a>
+</form>
+{% endblock %}
