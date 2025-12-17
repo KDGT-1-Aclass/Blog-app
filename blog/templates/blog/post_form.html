@@ -8,6 +8,6 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">保存</button>
-    <a href="{% url 'post_list' %}" class="btn btn-secondary">キャンセル</a>
+    <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">キャンセル</a>
 </form>
 {% endblock %}

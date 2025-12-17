@@ -21,7 +21,7 @@ def post_create(request):
             post.author = request.user
             post.save()
             messages.success(request, '投稿を作成しました！')
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog:post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'blog/post_form.html', {'form': form, 'title': '新規投稿'})
@@ -31,14 +31,14 @@ def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if post.author != request.user:
         messages.error(request, '編集権限がありません。')
-        return redirect('post_list')
+        return redirect('blog:post_list')
     
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
             messages.success(request, '投稿を更新しました！')
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog:post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_form.html', {'form': form, 'title': '投稿を編集'})
@@ -48,10 +48,10 @@ def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if post.author != request.user:
         messages.error(request, '削除権限がありません。')
-        return redirect('post_list')
+        return redirect('blog:post_list')
     
     if request.method == 'POST':
         post.delete()
         messages.success(request, '投稿を削除しました。')
-        return redirect('post_list')
+        return redirect('blog:post_list')
     return render(request, 'blog/post_confirm_delete.html', {'post': post})

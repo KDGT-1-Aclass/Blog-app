@@ -6,12 +6,12 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
-    template_name = 'accounts/signup.html'
+    template_name = 'registration/signup.html'
     success_url = reverse_lazy('accounts:login')
 
 
-class LoginView(LoginView):
-    template_name = 'accounts/login.html'
+class AccountLoginView(LoginView):
+    template_name = 'registration/login.html'
 
 
 class LogoutView(LogoutView):

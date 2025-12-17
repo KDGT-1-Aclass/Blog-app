@@ -15,10 +15,10 @@
     <div class="mb-4" style="white-space: pre-wrap;">{{ post.content }}</div>
     
     {% if user == post.author %}
-        <a href="{% url 'post_edit' post.pk %}" class="btn btn-warning">編集</a>
-        <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">削除</a>
+        <a href="{% url 'blog:post_edit' post.pk %}" class="btn btn-warning">編集</a>
+        <a href="{% url 'blog:post_delete' post.pk %}" class="btn btn-danger">削除</a>
     {% endif %}
     
-    <a href="{% url 'post_list' %}" class="btn btn-secondary">一覧に戻る</a>
+    <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">一覧に戻る</a>
 </article>
 {% endblock %}
